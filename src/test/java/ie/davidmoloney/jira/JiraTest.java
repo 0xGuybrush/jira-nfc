@@ -17,8 +17,11 @@ public class JiraTest {
 
     @Test
     public void test_that_class_can_read_properties() throws Exception {
-        assertThat(jira.getJIRA_URL(), is(equalTo("foo")));
-        assertThat(jira.getJIRA_USER(), is(equalTo("bar")));
-        assertThat(jira.getJIRA_PASSWORD(), is(equalTo("baz")));
+        assertThat(jira.getJiraUrl(), is(equalTo("foo")));
+        assertThat(jira.getJiraUser(), is(equalTo("bar")));
+        assertThat(jira.getJiraPassword(), is(equalTo("baz")));
     }
+
+
+
 }

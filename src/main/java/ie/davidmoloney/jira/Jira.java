@@ -1,5 +1,7 @@
 package ie.davidmoloney.jira;
 
+import org.apache.http.Header;
+
 import java.io.IOException;
 import java.util.Properties;
 
@@ -8,7 +10,6 @@ public class Jira {
     private String JIRA_URL;
     private String JIRA_USER;
     private String JIRA_PASSWORD;
-
 
     public Jira() {
         Properties properties = getPropertiesFromFile();
@@ -29,19 +30,20 @@ public class Jira {
         return prop;
     }
 
-    public int connectToJira() {
-        return 0;
-    }
-
-    public String getJIRA_USER() {
+    public String getJiraUser() {
         return JIRA_USER;
     }
 
-    public String getJIRA_URL() {
+    public String getJiraUrl() {
         return JIRA_URL;
     }
 
-    public String getJIRA_PASSWORD() {
+    public String getJiraPassword() {
         return JIRA_PASSWORD;
+    }
+
+    public Header encodeDetails(String username, String password) {
+        RequestManager requestManager = new RequestManager();
+        return requestManager.createAuthorizationHeader(username, password);
     }
 }
