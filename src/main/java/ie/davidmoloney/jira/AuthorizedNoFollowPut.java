@@ -2,12 +2,12 @@ package ie.davidmoloney.jira;
 
 import org.apache.http.Header;
 import org.apache.http.HttpHeaders;
+import org.apache.http.client.methods.HttpPut;
 import org.apache.http.message.BasicHeader;
 
-public class AuthorizedNoFollowGet extends NoFollowGet {
-
-    public AuthorizedNoFollowGet(ConnectionDetails connectionDetails, String relativeUri) {
-        super(connectionDetails.getBaseUri() + relativeUri);
+public class AuthorizedNoFollowPut extends HttpPut {
+    public AuthorizedNoFollowPut(ConnectionDetails connectionDetails, String test_issue) {
+        super(connectionDetails.getBaseUri() + test_issue);
         setHeader(createAuthorizationHeader(connectionDetails.getUser(), connectionDetails.getPassword()));
     }
 
@@ -19,14 +19,4 @@ public class AuthorizedNoFollowGet extends NoFollowGet {
         authorizationValue.append(encodedUserPassCombo);
         return new BasicHeader(HttpHeaders.AUTHORIZATION, authorizationValue.toString());
     }
-
-
-
 }
-
-//class AuthorizationHeader extends BasicHeader {
-//    AuthorizationHeader(String username, String password) {
-//        //super(HttpHeaders.A);
-//
-//    }
-//}
