@@ -8,8 +8,10 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPut;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.BufferedReader;
@@ -92,6 +94,21 @@ public class AuthenticatedJiraClientTest {
         HttpResponse response = client.execute(get);
 
         assertThat(response.getStatusLine().getStatusCode(), is(200));
+
+    }
+
+    @Test
+    @Ignore
+    public void test_that_an_authenticated_put_request_with_valid_credentials_can_add_a_comment_to_an_issue() throws Exception {
+        HttpPut put = new AuthorizedNoFollowPut(connectionDetails, test_issue);
+        put.addHeader("Content-Type", "application/json");
+        //CURL DATA format: --data "{\"update\":{\"comment\":[{\"add\":{\"body\":\"Hello\"}}]}}"
+
+        StringEntity entity = new StringEntity("{\"update\":{\"comment\":[{\"add\":{\"body\":\"Hello\"}}]}}","UTF-8");
+        put.setEntity(entity);
+        HttpResponse response = client.execute(put);
+
+        assertThat(response.getStatusLine().getStatusCode(), is(204));
 
     }
 

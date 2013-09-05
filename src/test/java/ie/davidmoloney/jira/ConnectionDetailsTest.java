@@ -17,7 +17,7 @@ public class ConnectionDetailsTest {
 
     @Test
     public void test_that_class_can_read_properties() throws Exception {
-        assertThat(connectionDetails .getBaseUri(), is(equalTo("foo")));
+        assertThat(connectionDetails.getBaseUri(), is(equalTo("foo")));
         assertThat(connectionDetails.getUser(), is(equalTo("bar")));
         assertThat(connectionDetails.getPassword(), is(equalTo("baz")));
     }
