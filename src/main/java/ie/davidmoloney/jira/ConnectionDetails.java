@@ -5,23 +5,29 @@ public class ConnectionDetails {
     private String BASE_URI;
     private String USER;
     private String PASSWORD;
+    private String PROJECT_KEY;
 
     public ConnectionDetails() {
         BASE_URI = System.getProperty("url");
         USER = System.getProperty("user");
         PASSWORD = System.getProperty("password");
+        PROJECT_KEY = System.getProperty("projectKey");
     }
 
-    public void setBASE_URI(String BASE_URI) {
+    public void setBaseUri(String BASE_URI) {
         this.BASE_URI = BASE_URI;
     }
 
-    public void setUSER(String USER) {
+    public void setUser(String USER) {
         this.USER = USER;
     }
 
-    public void setPASSWORD(String PASSWORD) {
+    public void setPassword(String PASSWORD) {
         this.PASSWORD = PASSWORD;
+    }
+
+    public String getProjectKey() {
+        return PROJECT_KEY;
     }
 
     public String getUser() {

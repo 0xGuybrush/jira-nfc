@@ -20,6 +20,7 @@ import java.io.InputStreamReader;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.fail;
 
 public class AuthenticatedJiraClientTest {
 
@@ -28,14 +29,15 @@ public class AuthenticatedJiraClientTest {
     public static final String REST_POST = "/rest/api/2/issue/";
     public static final String TRANSITIONS = "/transitions";
     public static final String SEPARATOR = "-";
-    private static final String TEST_KEY = "TEST";
+    private static final String TEST_KEY = System.getProperty("test.project.key");
     public static final String APPLICATION_JSON = "application/json";
     public static final String CONTENT_TYPE = "Content-Type";
     public static final String UTF_8 = "UTF-8";
-    protected String vaa11144 = BROWSE + PROJECT_KEY + SEPARATOR + "11144";
-    protected String test_issue = BROWSE + TEST_KEY + SEPARATOR + "36";
-    protected String test_rest_issue = REST + TEST_KEY + SEPARATOR + "36";
-    protected String test_rest_issue_post = REST_POST + TEST_KEY + SEPARATOR + "36";
+    private static final String PROJECT_KEY = System.getProperty("real.project.key");
+    protected String vaa11144 = BROWSE + PROJECT_KEY + SEPARATOR + System.getProperty("real.issue.id");
+    protected String test_issue = BROWSE + TEST_KEY + SEPARATOR + System.getProperty("test.issue.id");
+    protected String test_rest_issue = REST + TEST_KEY + SEPARATOR + System.getProperty("test.issue.id");
+    protected String test_rest_issue_post = REST_POST + TEST_KEY + SEPARATOR + System.getProperty("test.issue.id");
     protected HttpClient client;
     protected ConnectionDetails connectionDetails;
 
@@ -144,7 +146,7 @@ public class AuthenticatedJiraClientTest {
 
     @Test
     public void test_that_we_can_update_an_issue_with_a_comment() throws Exception {
-
+        fail("Pending");
 
     }
 
